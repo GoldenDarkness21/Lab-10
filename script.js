@@ -11,14 +11,9 @@ const render = () => {
   }
 
   const fetchProducts = async () => {
-    try {
       const response = await fetch("data.json");
       const data = await response.json();
       return data;
-    } catch (error) {
-      console.error(":( error", error);
-      return [];
-    }
   };
 
   const renderProducts = async () => {
@@ -59,7 +54,6 @@ const render = () => {
       productItem.appendChild(title);
       productItem.appendChild(price);
       productItem.appendChild(buyButton);
-
       productList.appendChild(productItem);
     });
   };
