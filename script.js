@@ -17,7 +17,7 @@ const render = () => {
   };
 
   const handleBuyButtonClick = (productId) => {
-    window.location.href = "productos.html";
+    window.location.href = `productos.html?productID=${productId}`;
   };
 
   const renderProducts = async () => {
