@@ -11,9 +11,13 @@ const render = () => {
   }
 
   const fetchProducts = async () => {
-      const response = await fetch("data.json");
-      const data = await response.json();
-      return data;
+    const response = await fetch("data.json");
+    const data = await response.json();
+    return data;
+  };
+
+  const handleBuyButtonClick = (productId) => {
+    window.location.href = "productos.html";
   };
 
   const renderProducts = async () => {
@@ -49,15 +53,21 @@ const render = () => {
       const buyButton = document.createElement("button");
       buyButton.classList.add("product-item__button");
       buyButton.textContent = "Comprar Ahora";
+      buyButton.setAttribute("data-product-id", product.id);
 
       productItem.appendChild(productImage);
       productItem.appendChild(title);
       productItem.appendChild(price);
       productItem.appendChild(buyButton);
       productList.appendChild(productItem);
+
+      buyButton.addEventListener("click", () => {
+        handleBuyButtonClick(product.id);
+      });
     });
   };
 
   renderProducts();
 };
+
 window.onload = render;
